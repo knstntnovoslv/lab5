@@ -1,7 +1,7 @@
 from collections import Counter
 import random
 import time
-import pandas as pd
+
 
 def find_subexpression_string():
     print("Input string")
@@ -12,7 +12,7 @@ def find_subexpression_string():
     min = int(input())
     print('Input max length of subexpression')
     max = int(input())
-    for i in range(len(st)-min):
+    for i in range(len(st)-min+1):
         if i <= len(st) - max:
             for j in range(min, max+1):
                 prom = st[i:i + j:1]
@@ -23,7 +23,6 @@ def find_subexpression_string():
                 prom = st[i:i + j:1]
                 res.append(prom)
             prom = str()
-            res.append(st[len(st) - min:len(st)])
     return res
 
 
@@ -41,18 +40,18 @@ def find_subexpression_sequence():
     min = int(input())
     print('Input max length of subexpression')
     max = int(input())
-    for i in range(len(st)-min):
+    for i in range(len(st)-min+1):
         if i <= len(st) - max:
             for j in range(min, max+1):
                 prom = st[i:i + j:1]
                 res.append(prom)
             prom = str()
         else:
-            for j in range(min, len(st) - i + 1):
+            for j in range(min, len(st)-i+1):
                 prom = st[i:i + j:1]
                 res.append(prom)
             prom = str()
-            res.append(st[len(st) - min:len(st)])
+
     return res
 
 def find_substring_time(dimension):
@@ -61,7 +60,7 @@ def find_substring_time(dimension):
     prom = str()
     min = 10
     max = 20
-    for i in range(len(st)-min):
+    for i in range(len(st)-min+1):
         if i <= len(st) - max:
             for j in range(min, max+1):
                 prom = st[i:i + j:1]
@@ -72,7 +71,6 @@ def find_substring_time(dimension):
                 prom = st[i:i + j:1]
                 res.append(prom)
             prom = str()
-            res.append(st[len(st) - min:len(st)])
     #Counter(res)
 def find_subsequence_time(dimension):
     res = []
@@ -82,7 +80,7 @@ def find_subsequence_time(dimension):
         st.append(random.randint(1, 100))
     min = 10
     max = 20
-    for i in range(len(st)-min):
+    for i in range(len(st)-min+1):
         if i <= len(st) - max:
             for j in range(min, max+1):
                 prom = st[i:i + j:1]
@@ -93,8 +91,7 @@ def find_subsequence_time(dimension):
                 prom = st[i:i + j:1]
                 res.append(prom)
             prom = str()
-            res.append(st[len(st) - min:len(st)])
-    #Counter(res)
+
 
 
 def timing_substring(dimension):
@@ -132,9 +129,12 @@ def menu():
                 second = int(input())
                 if(second == 1):
                     print_result_substring(timing_substring(200))
+                    print()
                     #break
                 elif(second == 2):
-                    print(Counter(find_subexpression_string()))
+                    g = find_subexpression_string()
+                    print(g)
+                    print(Counter(g))
                     #break
                 else:
                     break
@@ -150,9 +150,11 @@ def menu():
                 third = int(input())
                 if (third == 1):
                     print_result_substring(timing_subseq(200))
+                    print()
                     #break
                 elif (third == 2):
                     print(find_subexpression_sequence())
+                    print()
                     #break
                 else:
                     break
