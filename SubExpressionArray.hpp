@@ -57,7 +57,7 @@ public:
         HelpArray<T1> res;
         if(min < max && alpha->GetSize() > max){
             HelpArray<T3> prom;
-            for(int count = 0; count < alpha->GetSize() - min; count++){
+            for(int count = 0; count <= alpha->GetSize() - min; count++){
                 if(count <= alpha->GetSize() - max){
                     for (int j = min; j <= max; j++) {
                         for (int i = count; i < j + count; i++) {
